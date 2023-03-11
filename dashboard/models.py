@@ -18,6 +18,7 @@ class Booking(models.Model):
     start_booking_date = models.DateTimeField(blank=True)
     end_booking_date = models.DateTimeField(blank=True)
     car_model = models.TextField()
+    approved = models.BooleanField(default=False)
     
     class Meta:
         ordering = ["-created_on"]
