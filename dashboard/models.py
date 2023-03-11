@@ -1,10 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
+from django.utils.text import slugify
 
 
 # STATUS = ((0, "Draft"), (1, "Published"))
 class Booking(models.Model):
+    booking_name = models.TextField()
     slug = models.SlugField(max_length=200, unique=True)
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="dashboard_bookings"
@@ -16,7 +18,7 @@ class Booking(models.Model):
     start_booking_date = models.DateTimeField(blank=True)
     end_booking_date = models.DateTimeField(blank=True)
     car_model = models.TextField()
-
+    
     class Meta:
         ordering = ["-created_on"]
 
