@@ -3,6 +3,9 @@
 {% block content %}
 
 <div class="container mt-5">
+    <div class="m-2 mx-auto">
+        <a href="{% url 'booking_creation' %}" class="btn btn-outline-dark" role="button" aria-pressed="true">Make a booking</a>
+    </div>
     <!-- Bookings List -->
     {% for booking in booking_list %}
     <div class="list-group">
