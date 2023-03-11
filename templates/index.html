@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container mt-5">
+    <!-- Bookings List -->
+    {% for booking in booking_list %}
+    <div class="list-group">
+        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start mb-2">
+            <div class="row">
+                <div class="d-flex w-100 justify-content-between">
+                    <div class="col-4 left ">
+                        <h5 class="mb-1 text-truncate w-90">{{ booking.booking_name }}</h5>
+                    </div>
+                    <div class="col-4 left">
+                        <small><i class="far fa-calendar-check"></i> start: <i>{{ booking.start_booking_date}}</i></small>
+                    </div>
+                    <div class="col-4 left">
+                        <small><i class="far fa-calendar-times"></i> end: <i>{{ booking.end_booking_date}}</i></small>
+                    </div>
+                </div>
+            </div>
+            <p class="mb-1"><i>{{ booking.notes }}</i></p>
+            <div class="row">
+                <div class="col-10 left">
+                    <small><i class="fas fa-car"></i> model: <i>{{ booking.car_model }}</i></small>
+                </div>
+                <div class="col-2 right">
+                    <div class="d-inline"> Approved: 
+                        <div class="d-inline">
+                            <input type="checkbox" title="approved" aria-label="Checkbox for following text input">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+    {% endfor %}
+    {% if is_paginated %}
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            {% if page_obj.has_previous %}
+            <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
+            {% endif %}
+            {% if page_obj.has_next %}
+            <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+
+            {% endif %}
+        </ul>
+    </nav>
+    {% endif %}
+</div>
+{%endblock%}
