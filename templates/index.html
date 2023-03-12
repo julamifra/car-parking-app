@@ -16,8 +16,8 @@
         <a href="#" class="list-group-item list-group-item-action flex-column align-items-start mb-2">
             <div class="row">
                 <div class="d-flex w-100 justify-content-between">
-                    <div class="col-4 left ">
-                        <h5 class="mb-1 text-truncate w-90 d-inline">{{ booking.booking_name }}</h5><span>: by {{ booking.author.username }}</span>
+                    <div class="col-4 left">
+                        <h5 class="mb-1 text-truncate" title="{{booking.booking_name}}">{{ booking.booking_name }}</h5><span>: by {{ booking.author.username }}</span>
                     </div>
                     <div class="col-4 left">
                         <small><i class="far fa-calendar-check"></i> start: <i>{{ booking.start_booking_date}}</i></small>
@@ -27,13 +27,13 @@
                     </div>
                 </div>
             </div>
-            <p class="mb-1"><i>{{ booking.notes }}</i></p>
+            <p class="mb-1 text-truncate" title="{{booking.notes}}"><i>{{ booking.notes }}</i></p>
             <div class="row">
-                <div class="col-10 left">
-                    <small><i class="fas fa-car"></i> model: <i>{{ booking.car_model }}</i></small>
+                <div class="col-8 left text-truncate" title="{{booking.car_model}}">
+                    <small ><i class="fas fa-car"></i> model: <i>{{ booking.car_model }}</i></small>
                 </div>
-                <div class="col-2 right">
-                    <div class="d-inline"> Approved: 
+                <div class="col-4 left">
+                    <div id="approved-title"> Approved: 
                         <div class="d-inline">
                             {% if booking.approved %}
                             <i class="fas fa-check-square"></i>
