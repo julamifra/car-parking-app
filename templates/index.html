@@ -3,17 +3,20 @@
 {% block content %}
 
 <div class="container mt-5">
+    
+    {% if user.is_authenticated %}
+
     <div class="m-2 mx-auto">
         <a href="{% url 'booking_creation' %}" class="btn btn-outline-dark" role="button" aria-pressed="true">Make a booking</a>
     </div>
-    <!-- Bookings List -->
+    <!-- Booking List -->
     {% for booking in booking_list %}
     <div class="list-group">
         <a href="#" class="list-group-item list-group-item-action flex-column align-items-start mb-2">
             <div class="row">
                 <div class="d-flex w-100 justify-content-between">
                     <div class="col-4 left ">
-                        <h5 class="mb-1 text-truncate w-90">{{ booking.booking_name }}</h5>
+                        <h5 class="mb-1 text-truncate w-90 d-inline">{{ booking.booking_name }}</h5><span>: by {{ booking.author.username }}</span>
                     </div>
                     <div class="col-4 left">
                         <small><i class="far fa-calendar-check"></i> start: <i>{{ booking.start_booking_date}}</i></small>
@@ -31,7 +34,11 @@
                 <div class="col-2 right">
                     <div class="d-inline"> Approved: 
                         <div class="d-inline">
-                            <input type="checkbox" title="approved" aria-label="Checkbox for following text input">
+                            {% if booking.approved %}
+                            <i class="fas fa-check-square"></i>
+                            {% else %}
+                            <i class="fas fa-spinner"></i>
+                            {% endif %}
                         </div>
                     </div>
                 </div>
@@ -52,5 +59,24 @@
         </ul>
     </nav>
     {% endif %}
+
+    {% else %}
+    <div>
+        <h5>
+            Welcome to My Personal Car Parking website. 
+        </h5>
+        </br>
+        <p>
+            If you'd like to make a reservation for my parking, you must have an acocunt.
+        </p>
+        <p>
+            <i class="fas fa-sign-in-alt"></i> If you already have an account, then please sign in here: <a class="badge badge-dark bg-dark p-2" href="{% url 'account_login' %}">Login</a>
+        </p>
+        <p>
+            <i class="fas fa-user-plus"></i> Otherwise, you can create an account by filling out the following form: <a class="badge badge-dark bg-dark p-2" href="{% url 'account_signup' %}">Register</a>
+        </p>
+        
+    {% endif %}
+
 </div>
 {%endblock%}

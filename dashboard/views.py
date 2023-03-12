@@ -14,7 +14,6 @@ class BookingList(generic.ListView):
 class BookingCreation(View):
 
     def get(self, request, *args, **kwargs):
-        print("GEEEET")
 
         return render(
             request,
