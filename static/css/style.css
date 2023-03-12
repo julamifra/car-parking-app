@@ -1,5 +1,9 @@
+#approved-title {
+    display: inline !important;
+}
+
 @media screen and (max-width: 850px) { 
     #approved-title {
-        display: none;
+        display: none !important;
     }
 }
