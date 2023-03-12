@@ -19,7 +19,6 @@ Users can registers in order to view and make a booking. When the user is logged
 - [Technologies](#technologies)
 - [Testing](#testing)
 - [Deployment](#deployment)
-- [Credits](#credits)
 
 ## Agile Workflow - User Stories
 
@@ -222,4 +221,36 @@ So, using this method, here were the results from my validator testing:
 
 #### Lighthouse Test:
 
-### User stories
+The Lighthouse testing of Chrome develeper tools giving the following results:
+
+![Lighthouse Validtor](./assets/img/lighthouse_test.PNG)
+
+In terms of the performance and accessibility it gives a very good result. For the Best Practice is given the 83% as some small errors are displayed in the console. After fixing them, the score increase to 92%.
+And in order to improve the SEO, the meta descriptions may be included in search results to concisely summarize page content.
+
+
+## Deployment
+
+For the deployment we have used Heroku as the Platform as a service (PaaS) and ElephantSQL for the database. These have been the steps followed for the deployment:
+
+- Create an account on Heroku
+- Inside, create a new app by following the steps
+- After creating the app, navigate to the 'Settings' tab and create two variables:
+    - DATABASE_URL = with the url of your postgress database
+    - SECREY_KEY = a unic secret key
+    - PORT = 8000
+- On your project, create an env.py file with these two variables (PORT is not needed)
+- In settings.py file:
+    - Remove the insecure secret key and replace it with: SECRET_KEY = os.environ.get(’SECRET_KEY')
+    - Update to use the DATABASE_URL: dj_database_url.parse(os.environ.get(”DATABASE_URL"))
+    - Add: STATIC_URL = ’/static/'
+    - STATICFILES_DIRS = [os.path.join(BASE_DIR, ’static')]
+    - STATIC_ROOT = os.path.join(BASE_DIR, ’staticfiles')
+    - MEDIA_URL = '/media/'
+    - ALLOWED_HOSTS = [”Your_Project_name.herokuapp.com”, ”localhost”]
+    - change the templaate directory: TEMPLATES_DIR: 'DIRS': [TEMPLATES_DIR],
+
+- Save all files and Make Migrations: python3 manage.py migrate
+- Create a Procfile on the top level directory of the project. Withing this file add the following line: 'web: gunicorn PROJ_NAME.wsgi'
+- Push to Github all these changes
+- In Heroku, go to the deploy tab and clicon on the "Deploy Branch" button.
