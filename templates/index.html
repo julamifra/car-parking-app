@@ -34,7 +34,7 @@
                 </div>
                 <div class="col-4 left">
                     <div>
-                        <div id="approved-title" class="d-inline">
+                        <div id="approved-title">
                             Approved: 
                         </div> 
                         <div class="d-inline">
@@ -69,7 +69,6 @@
         <h5>
             Welcome to My Personal Car Parking website. 
         </h5>
-        </br>
         <p>
             If you'd like to make a reservation for my parking, you must have an acocunt.
         </p>
@@ -79,8 +78,7 @@
         <p>
             <i class="fas fa-user-plus"></i> Otherwise, you can create an account by filling out the following form: <a class="badge badge-dark bg-dark p-2" href="{% url 'account_signup' %}">Register</a>
         </p>
-        
+    </div>
     {% endif %}
-
 </div>
 {%endblock%}

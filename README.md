@@ -194,3 +194,32 @@ there is a fallback background colour set so the page still functions.
 
 
 ## Testing
+
+For testing the website, I've used different tools and validators:
+
+#### W3C Markup Validator:
+
+In terms of the html validor, only 3 important error were found and fixed.
+
+![W3C HTML Validtor](./assets/img/hml_tests.PNG)
+
+#### W3C CSS Validator:
+
+No error were found after passing the CSS validator.
+
+![W3C CSS Validtor](./assets/img/css_tests.PNG)
+
+
+#### Python Validor:
+
+In order to validate the python code, I've used [pycodestyle](https://pypi.org/project/pycodestyle/) tool. 
+It was necesary to install it by following the steps from the official documentation.
+
+So, using this method, here were the results from my validator testing:
+
+![Python Validtor](./assets/img/python-tests.PNG)
+
+
+#### Lighthouse Test:
+
+### User stories
