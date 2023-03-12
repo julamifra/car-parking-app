@@ -48,9 +48,11 @@
                     </li>
                     {% endif %}
                 </ul>
+                {% if user.username %}
                 <span class="navbar-text text-muted">
-                    TEST TEST - change this
+                    {{user.username}}
                 </span>
+                {% endif %}
             </div>
         </div>
     </nav>

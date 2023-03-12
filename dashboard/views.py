@@ -1,6 +1,7 @@
-from django.shortcuts import render
-from django.views import generic
-from .models import Booking
+from django.shortcuts import render, get_object_or_404
+from django.views import generic, View
+from .models import Booking, User
+from .forms import BookingForm
 
 
 class BookingList(generic.ListView):
@@ -10,7 +11,43 @@ class BookingList(generic.ListView):
     paginate_by = 6
 
 
-class BookingCreation(generic.ListView):
+class BookingCreation(View):
 
     def get(self, request, *args, **kwargs):
-        return render(request, "booking_creation.html")
+        print("GEEEET")
+
+        return render(
+            request,
+            "booking_creation.html",
+            {
+                "test": "GEEET",
+                "booking_form": BookingForm()
+            },
+        )
+
+    def post(self, request, *args, **kwargs):
+
+        queryset = User.objects.filter(username=request.user.username)
+        user = get_object_or_404(queryset)
+
+        booking_form = BookingForm(data=request.POST)
+
+        if booking_form.is_valid():
+            booking_form.instance.email = request.user.email
+            booking_form.instance.name = request.user.username
+
+            booking = booking_form.save(commit=False)
+            booking.author = user
+            
+            booking.save()
+        else:
+            booking_form = BookingForm()
+
+        return render(
+            request,
+            "booking_creation.html",
+            {
+                "test": "POOOOST",
+                "booking_form": BookingForm()
+            },
+        )
