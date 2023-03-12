@@ -3,7 +3,6 @@
 As my fourth project with Code Institute, I've decided to implement a website in Django, where users will be able to make reservations in my private car parking space. The main idea for this project is to create a website where I can manage the renting of my private car space (while I'm not using it), allowing people to use it for a couple of hours, days, or weeks. The pourpose of this website would be to post it on other blogs, websites,... give information of the location and prices, and then control the bookings by myself on this app.
 
 - ![Responsice Dasboard](./assets/img/dashboard_1.PNG)
-- ![Responsice Home Dashboard](./assets/img/dashboard_2.PNG)
 
 Users can registers in order to view and make a booking. When the user is logged in, he can see all the bookings from all the users on the list. By clicking on the creation button, a new booking can be created by the user who is logged in.
 
