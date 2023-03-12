@@ -20,7 +20,7 @@ class BookingCreation(View):
             request,
             "booking_creation.html",
             {
-                "test": "GEEET",
+                "created": False,
                 "booking_form": BookingForm()
             },
         )
@@ -38,7 +38,7 @@ class BookingCreation(View):
 
             booking = booking_form.save(commit=False)
             booking.author = user
-            
+
             booking.save()
         else:
             booking_form = BookingForm()
@@ -47,7 +47,7 @@ class BookingCreation(View):
             request,
             "booking_creation.html",
             {
-                "test": "POOOOST",
+                "created": True,
                 "booking_form": BookingForm()
             },
         )

@@ -13,14 +13,23 @@
   <div class="row">
     <div class="row">
       <div class="col-md-8 mt-3 offset-md-2">
-        <div>{{ test }}</div>
+
         {% if user.is_authenticated %}
         <p><strong>Username: </strong> {{ user.username }}</p>
         <form method="post" style="margin-top: 1.3em;">
           {{ booking_form | crispy }}
           {% csrf_token %}
-          <button type="submit" class="btn btn-secondary btn-lg">Submit</button>
+          <button type="submit" class="btn btn-secondary btn-lg mt-3">Submit</button>
         </form>
+        {% else %}
+        <h5>In order to make a booking you must be logged in. </h5>
+        <p>If you have not created an account yet, then please sign up first.
+        </p>
+        {% endif %}
+        {% if created %}
+        <div class="alert alert-success mt-3" role="alert">
+          Your booking has been sent and is awaiting approval
+        </div>
         {% endif %}
       </div>
     </div>

@@ -13,8 +13,8 @@ class Booking(models.Model):
     created_on = models.DateTimeField(auto_now_add=True)
     notes = models.TextField()
     # status = models.IntegerField(choices=STATUS, default=0)
-    start_booking_date = models.DateTimeField(blank=True)
-    end_booking_date = models.DateTimeField(blank=True)
+    start_booking_date = models.DateTimeField()
+    end_booking_date = models.DateTimeField()
     car_model = models.TextField()
     approved = models.BooleanField(default=False)
 
