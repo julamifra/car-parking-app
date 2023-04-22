@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% load crispy_forms_tags %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 mt-3 offset-md-2">
+      <h3>Edit booking:</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="row">
+      <div class="col-md-8 mt-3 offset-md-2">
+
+        {% if user.is_authenticated %}
+        <p><strong>Username: </strong> {{ user.username }}</p>
+        <form method="post" style="margin-top: 1.3em;">
+          {{ booking_form | crispy }}
+          {% csrf_token %}
+          <div class="">
+            <button type="submit" class="btn btn-secondary btn-lg mt-3">Edit</button>
+            <button type="" class="btn btn-danger btn-lg mt-3 float-end">Delete</button>
+          </div>
+        </form>
+        {% else %}
+        <h5>In order to make a booking you must be logged in. </h5>
+        <p>If you have not created an account yet, then please sign up first.
+        </p>
+        {% endif %}
+        {% if created %}
+        <div class="alert alert-success mt-3" role="alert">
+          Your booking has been saved correctly and is awaiting approval
+        </div>
+        {% endif %}
+      </div>
+      
+    </div>
+  </div>
+
+</div>
+
+{% endblock %}

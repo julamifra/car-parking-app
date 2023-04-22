@@ -12,7 +12,6 @@ class BookingList(generic.ListView):
 
 
 class BookingCreation(View):
-
     def get(self, request, *args, **kwargs):
 
         return render(
@@ -47,6 +46,19 @@ class BookingCreation(View):
             "booking_creation.html",
             {
                 "created": True,
+                "booking_form": BookingForm()
+            },
+        )
+
+
+class BookingEdition(View):
+    def get(self, request, *args, **kwargs):
+
+        return render(
+            request,
+            "booking_edition.html",
+            {
+                "created": False,
                 "booking_form": BookingForm()
             },
         )
