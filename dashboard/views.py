@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic, View
 from .models import Booking, User
 from .forms import BookingForm
+from django.contrib import messages
 
 
 class BookingList(generic.ListView):
@@ -18,7 +19,6 @@ class BookingCreation(View):
             request,
             "booking_creation.html",
             {
-                "created": False,
                 "booking_form": BookingForm()
             },
         )
@@ -41,11 +41,12 @@ class BookingCreation(View):
         else:
             booking_form = BookingForm()
 
+        messages.success(request, 'Your booking has been sent and is awaiting approval')
+
         return render(
             request,
             "booking_creation.html",
             {
-                "created": True,
                 "booking_form": BookingForm()
             },
         )
@@ -61,7 +62,6 @@ class BookingEdition(View):
             request,
             "booking_edition.html",
             {
-                "edited": False,
                 "booking_form": BookingForm(data={
                     'booking_name': booking.booking_name,
                     'car_model': booking.car_model,
@@ -90,11 +90,12 @@ class BookingEdition(View):
         else:
             booking_form = BookingForm()
 
+        messages.success(request, 'Your booking has been saved correctly and is awaiting approval')
+
         return render(
             request,
             "booking_edition.html",
             {
-                "edited": True,
                 "booking_form": BookingForm(data=request.POST),
                 "booking_id": booking.id
             },
@@ -104,4 +105,5 @@ class BookingEdition(View):
 def delete_booking(request, booking_id):
     data = get_object_or_404(Booking, id=booking_id)
     data.delete()
+    messages.success(request, f'Successfully removed booking: {data.booking_name}')
     return redirect('home')
