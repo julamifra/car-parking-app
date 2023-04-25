@@ -38,16 +38,15 @@ class BookingCreation(View):
             booking.author = user
 
             booking.save()
-        else:
-            booking_form = BookingForm()
 
-        messages.success(request, 'Your booking has been sent and is awaiting approval')
+            messages.success(request, 'Your booking has been sent and is awaiting approval')  
+            return redirect('home')
 
         return render(
             request,
             "booking_creation.html",
             {
-                "booking_form": BookingForm()
+                "booking_form": booking_form
             },
         )
 
