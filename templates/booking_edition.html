@@ -21,7 +21,9 @@
           {% csrf_token %}
           <div>
             <button type="submit" class="btn btn-secondary btn-lg mt-3" >Edit</button>
-            <button type="button" class="btn btn-danger btn-lg mt-3 float-end" onclick="">Delete</button>
+            <a href="{% url 'delete_booking' booking_id %}">
+              <button type="button" class="btn btn-danger btn-lg mt-3 float-end">Delete</button>
+            </a>
           </div>
         </form>
         {% else %}

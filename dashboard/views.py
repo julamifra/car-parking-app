@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic, View
 from .models import Booking, User
 from .forms import BookingForm
@@ -67,7 +67,8 @@ class BookingEdition(View):
                     'car_model': booking.car_model,
                     'notes': booking.notes,
                     'start_booking_date': booking.start_booking_date,
-                    'end_booking_date': booking.end_booking_date})
+                    'end_booking_date': booking.end_booking_date}),
+                "booking_id": booking.id
             },
         )
 
@@ -94,6 +95,13 @@ class BookingEdition(View):
             "booking_edition.html",
             {
                 "created": True,
-                "booking_form": BookingForm(data=request.POST)
+                "booking_form": BookingForm(data=request.POST),
+                "booking_id": booking.id
             },
         )
+
+
+def delete_booking(request, booking_id):
+    data = get_object_or_404(Booking, id=booking_id)
+    data.delete()
+    return redirect('home')
