@@ -15,6 +15,11 @@
       <div class="col-md-8 mt-3 offset-md-2">
 
         {% if user.is_authenticated %}
+        {% if created %}
+        <div class="alert alert-success mt-3" role="alert">
+          Your booking has been sent and is awaiting approval
+        </div>
+        {% endif %}
         <p><strong>Username: </strong> {{ user.username }}</p>
         <form method="post" style="margin-top: 1.3em;">
           {{ booking_form | crispy }}
@@ -26,11 +31,7 @@
         <p>If you have not created an account yet, then please sign up first.
         </p>
         {% endif %}
-        {% if created %}
-        <div class="alert alert-success mt-3" role="alert">
-          Your booking has been sent and is awaiting approval
-        </div>
-        {% endif %}
+
       </div>
     </div>
   </div>
