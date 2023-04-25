@@ -61,7 +61,7 @@ class BookingEdition(View):
             request,
             "booking_edition.html",
             {
-                "created": False,
+                "edited": False,
                 "booking_form": BookingForm(data={
                     'booking_name': booking.booking_name,
                     'car_model': booking.car_model,
@@ -94,7 +94,7 @@ class BookingEdition(View):
             request,
             "booking_edition.html",
             {
-                "created": True,
+                "edited": True,
                 "booking_form": BookingForm(data=request.POST),
                 "booking_id": booking.id
             },
