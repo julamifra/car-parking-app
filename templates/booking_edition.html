@@ -19,9 +19,9 @@
         <form method="post" style="margin-top: 1.3em;">
           {{ booking_form | crispy }}
           {% csrf_token %}
-          <div class="">
-            <button type="submit" class="btn btn-secondary btn-lg mt-3">Edit</button>
-            <button type="" class="btn btn-danger btn-lg mt-3 float-end">Delete</button>
+          <div>
+            <button type="submit" class="btn btn-secondary btn-lg mt-3" >Edit</button>
+            <button type="button" class="btn btn-danger btn-lg mt-3 float-end" onclick="">Delete</button>
           </div>
         </form>
         {% else %}
