@@ -81,6 +81,13 @@ class BookingEdition(View):
         )
 
     def post(self, request, *args, **kwargs):
+        try:
+            print("booking_id: ", request.POST)
+            booking_id_to_delete = request.POST['booking_id']
+            data = get_object_or_404(Booking, id=booking_id_to_delete)
+            data.delete()
+        except Exception as e:
+            print('%s' % e)
 
         queryset = User.objects.filter(username=request.user.username)
         user = get_object_or_404(queryset)

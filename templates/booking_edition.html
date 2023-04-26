@@ -20,6 +20,7 @@
         <form method="post" style="margin-top: 1.3em;">
           {{ booking_form | crispy }}
           {% csrf_token %}
+          <input type="hidden" id="booking_id" name="booking_id" value="{{booking_id}}">
           <div>
             <button type="submit" class="btn btn-secondary btn-lg mt-3" >Edit</button>
             <a href="{% url 'delete_booking' booking_id %}">
