@@ -27,7 +27,7 @@ Users can registers in order to view and make a booking. When the user is logged
 
 In this project an agile methodology has been used, in order to organize and prioritize the development tasks. Some User Stories have been created on the Github dashboard, in github projects. In addition, two categories were created in order to indicate the level of importance of each user story: "Must-Have" and "Should-Have".
 
-Here is the link to Github Projects: [Github project board](https://github.com/users/julamifra/projects/3/views/1). In here I've created all user stories, priorited them and adding the Acceptance Criteria for each of them.
+Here is the link to Github Projects: [Github project board](https://github.com/users/julamifra/projects/3/views/1). In here I've created all user stories, prioritized them and added the Acceptance Criteria for each of them.
 
 ![Agile Dashboard](./assets/img/github_dashboard_agile_workflow.PNG)
 
