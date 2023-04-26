@@ -8,6 +8,8 @@
     <div class="m-2 mx-auto">
         <a href="{% url 'booking_creation' %}" class="btn btn-outline-dark" role="button" aria-pressed="true">Make a booking</a>
     </div>
+
+    {% if booking_list %}
     
     <!-- Booking List -->
     {% for booking in booking_list %}
@@ -62,6 +64,11 @@
         </ul>
     </nav>
     {% endif %}
+    
+    {% else %}
+    <p>You don't have any booking yet.</p>
+    {% endif %}
+
 
     {% else %}
     <div>
