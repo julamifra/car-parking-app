@@ -35,4 +35,7 @@ class BookingForm(forms.ModelForm):
         if start_booking_date.timestamp() < timezone.now().timestamp():
             self._errors['start_booking_date'] = self.error_class(['The start date should be after today'])
         
+        if end_booking_date.timestamp() < start_booking_date.timestamp():
+            self._errors['end_booking_date'] = self.error_class(['The end date should not be before the start date'])
+        
         return self.cleaned_data
