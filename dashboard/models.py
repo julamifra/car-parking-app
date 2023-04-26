@@ -3,6 +3,9 @@ from django.contrib.auth.models import User
 
 
 class Booking(models.Model):
+    """
+    Booking model
+    """
     booking_name = models.TextField()
     author = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="dashboard_bookings"

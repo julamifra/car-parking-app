@@ -5,6 +5,9 @@ from django.utils import timezone
 
 
 class BookingForm(forms.ModelForm):
+    """
+    This class handle the form to show when creating or editing a booking
+    """
     class Meta:
         model = Booking
         fields = ('booking_name', 'notes', 'car_model', 'start_booking_date', 'end_booking_date',)
@@ -21,6 +24,9 @@ class BookingForm(forms.ModelForm):
         }
 
     def clean(self):
+        """
+        This function handles some form data validation 
+        """
         super(BookingForm, self).clean()
 
         start_booking_date = self.cleaned_data.get('start_booking_date')

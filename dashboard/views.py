@@ -6,13 +6,21 @@ from django.contrib import messages
 
 
 class BookingList(generic.ListView):
+    """
+    View to display Booking list in the home page
+    """
+
     model = Booking
     template_name = 'index.html'
     paginate_by = 6
 
     def get_queryset(self):
+        """
+        Method to filter the bookings by the active user
+        """
         try:
             if self.request.user.is_authenticated:
+
                 user = self.request.user
                 return Booking.objects.filter(author=user).order_by('-created_on')
             else:
@@ -22,6 +30,9 @@ class BookingList(generic.ListView):
 
 
 class BookingCreation(View):
+    """
+    View to display and handle Booking creation form
+    """
     def get(self, request, *args, **kwargs):
 
         return render(
@@ -61,7 +72,9 @@ class BookingCreation(View):
 
 
 class BookingEdition(View):
-
+    """
+    View to display and handle Booking edition form
+    """
     def get(self, request, booking_id, *args, **kwargs):
 
         booking = get_object_or_404(Booking, id=booking_id)
@@ -118,6 +131,9 @@ class BookingEdition(View):
 
 
 def delete_booking(request, booking_id):
+    """
+    Method to handle the remove booking request
+    """
     data = get_object_or_404(Booking, id=booking_id)
     data.delete()
     messages.success(request, f'Successfully removed booking: {data.booking_name}')
