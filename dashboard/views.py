@@ -7,9 +7,18 @@ from django.contrib import messages
 
 class BookingList(generic.ListView):
     model = Booking
-    queryset = Booking.objects.order_by('-created_on')
     template_name = 'index.html'
     paginate_by = 6
+
+    def get_queryset(self):
+        try:
+            if self.request.user.is_authenticated:
+                user = self.request.user
+                return Booking.objects.filter(author=user).order_by('-created_on')
+            else:
+                return Booking.objects.order_by('-created_on')
+        except Exception as e:
+            print('%s' % e)
 
 
 class BookingCreation(View):
