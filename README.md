@@ -8,7 +8,9 @@ Users can registers in order to view and make a booking. When the user is logged
 
 # Table of Contents
 
-- [Agile Workflow - User Stories](#agile-workflow)
+- [Agile Workflow](#agile-workflow)
+    - [Agile Methodology](#agile-methodology)
+    - [User Stories](#user-stories)
 - [Features](#features)
 - [Future features](#future-features)
 - [Design](#design)
@@ -19,21 +21,29 @@ Users can registers in order to view and make a booking. When the user is logged
 - [Testing](#testing)
 - [Deployment](#deployment)
 
-## Agile Workflow - User Stories
+## Agile Workflow 
 
-To this project, I've used an agile methodology in order to organize and prioritize the development tasks. Some User Stories have been created on the Github dashboard.
+### Agile Methodology
+
+In this project an agile methodology has been used, in order to organize and prioritize the development tasks. Some User Stories have been created on the Github dashboard, in github projects. In addition, two categories were created in order to indicate the level of importance of each user story: "Must-Have" and "Should-Have".
+
+Here is the link to Github Projects: [Github project board](https://github.com/users/julamifra/projects/3/views/1). In here I've created all user stories, priorited them and adding the Acceptance Criteria for each of them.
 
 ![Agile Dashboard](./assets/img/github_dashboard_agile_workflow.PNG)
 
 ### User Stories
 
-- Manage booking: As a Site Admin I can create, read, update and delete booking so that I can manage my car space bookings.
-- Create booking form: As a Site User I can create a new booking on a form so that I can request a booking to the admin.
-- Approve bookings: As a Site Admin I can approve or disapprove bookings so that I can say to users that date is accepted.
+- Registration: As a Site User I can register an account so that I can book any available date.
+- Site pagination: As a Site User I can paginate the booking list so that see a list of all the bookings.
 - View booking list: As a Site User I can view a list of bookings so that I can see when I can't book.
-- Site pagination: As a Site User I can paginate the booking list so that see a list of all the bookings
-- Registration: As a Site User I can register an account so that I can book any available date
-- Open a booking: As a Site User I can click on a book so that I can read booking information
+- Approve bookings: As a Site Admin I can approve or disapprove bookings so that I can say to users that date is accepted.
+- Edit bookings: As a Site User I can edit a booking so that I can modify any information I want.
+- Create bookings: As a Site User I can create a new booking on a form so that I can request a booking to the admin.
+- Remove bookings: Remove booking: As a Site User I can remove a booking so that I can remove it from my list.
+- Add form validation: As an user I only can save bookings starting from today so that I can't book a space for a date before today.
+- Interaction messages: As an user I can see interaction messages when login, saving, editing and removing so that I can know when something is done correctly.
+
+
 
 
 ## Features
@@ -99,6 +109,26 @@ The form contains five required fields to fill out:
 
 By clicking on the submit button the booking is requested and a success meesage will be shown.
 
+- __Edition booking Form__
+
+By clicking on a booking from the list, user will be able to edit any field from the corresponding booking.
+
+Also, a Delete button would be display at the very end of the page, next to the Submit button. By cliking on it, users can remove that booking, so that, it is not displayed on the list anymore.
+
+![Booking edition](./assets/img/edit_booking.PNG)
+
+- __Interaction messages__
+
+When iteracting with the website, different messages are shown depending on the action that has been executed.
+
+These messages are displayed at the top of the site, just below the navigation bar.
+
+These are three messages examples when creating, editing and removing:
+
+![Create message](./assets/img/sent_message.PNG)
+![Edit message](./assets/img/edit_message.PNG)
+![Remove message](./assets/img/remove_message.PNG)
+
 - __Register__
 
 ![Register](./assets/img/register_page.PNG)
@@ -126,9 +156,11 @@ Users can log out from the website by clicking on the logout button on the navig
 
 ## Future features
 
-- USER STORY: Open a booking.
-- When creating a new booking, users can only choose a date that hasn't been taken by others.
 - Add an email field in order to send notifications to the users when the picked date is approved.
+
+- User can search any booking from a search field.
+
+- User can order the booking list by date, name or other fields.
 
 ## Future features
 
